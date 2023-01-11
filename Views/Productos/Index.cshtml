@@ -1,0 +1,40 @@
+﻿@model List<Productos>
+
+@*Estilo del JQuery para paginar y enumerar las tablas *@
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+
+<div class="container-fluid">
+    <div class="card mt-2">
+        <div class="card-header text-info">
+            <i class="fa fa-object-group"></i> <h1> <strong>Productos</strong></h1>
+        </div>
+        <div class="card-body">
+            <div id="view-all">
+                @await Html.PartialAsync("_ViewAllProductos", Model)
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="~/js/showmodal.js"></script>
+
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#Productos').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                },
+                "aLengthMenu": [
+                    [10, 15, 25, 50, 100, 200, -1],
+                    [10, 15, 25, 50, 100, 200, "Todos"]
+                ]
+            });
+        });
+    </script>
+}

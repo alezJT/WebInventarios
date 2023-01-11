@@ -1,0 +1,42 @@
+﻿@model List<Productos>
+
+
+
+<a class="btn btn-success" asp-action="Crear">Nuevo Producto</a>
+
+<hr style="visibility:hidden" />
+
+
+<table class="table" id="Productos">
+    <thead>
+        <tr>
+            <th>Cosigo</th>
+
+            <th>Nombre</th>
+
+            <th>Cantidad</th>
+
+            <th>Acciones</th>
+
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var producto in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(p=>producto.ProductoId) </td>
+
+                <td>@Html.DisplayFor(p=>producto.ProductoDesc) </td>
+
+                <td>@Html.DisplayFor(p=>producto.ProductoCan) </td>
+
+                <td>
+                    <a asp-action="Delete" asp-route-id="@producto.ProductoId" class="btn btn-danger deleteItem">Eliminar</a>
+                    <a asp-action="Update" class="btn btn-info" asp-route-proid="@producto.ProductoId">Editar</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
