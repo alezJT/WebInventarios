@@ -14,7 +14,7 @@ namespace WebInventarios.Models
         }
 
         public virtual DbSet<Inventarios> Inventarios { get; set; } = null!;
-        public virtual DbSet<Productos> Producto { get; set; } = null!;
+        public virtual DbSet<Productos> Productos { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -31,7 +31,7 @@ namespace WebInventarios.Models
             {
                 entity.HasNoKey();
 
-                entity.ToTable("Inventario");
+                entity.ToTable("Inventarios");
 
                 entity.Property(e => e.ProductoId).HasColumnName("ProductoID");
             });
