@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace WebInventarios.Models
 {
@@ -31,7 +34,7 @@ namespace WebInventarios.Models
             {
                 entity.HasNoKey();
 
-                entity.ToTable("Inventarios");
+                entity.ToTable("Inventario");
 
                 entity.Property(e => e.ProductoId).HasColumnName("ProductoID");
             });

@@ -5,8 +5,9 @@ using System.Collections.Generic;
 
 namespace WebInventarios.Models
 {
-    public class Productos
+    public partial class Productos
     {
+        [Key]
         public int ProductoId { get; set; }
 
         [Display(Name = "Producto Nombre")]

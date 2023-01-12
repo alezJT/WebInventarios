@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebInventarios.Models;
 
 namespace WebInventarios.Controllers
@@ -13,9 +14,9 @@ namespace WebInventarios.Controllers
             _context = context;
         }
         // GET: ProductosController
-        public ActionResult Index()
+        public async Task <IActionResult> Index()
         {
-            return View();
+            return View(await _context.Productos.ToListAsync());
         }
 
         // GET: ProductosController/Details/5
