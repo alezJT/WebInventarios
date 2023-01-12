@@ -1,13 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System;
-using System.Collections.Generic;
 
 namespace WebInventarios.Models
 {
-    public partial class Productos
+    public partial class Producto
     {
-       
         public int ProductoId { get; set; }
 
         [Display(Name = "Producto Nombre")]
@@ -20,4 +16,3 @@ namespace WebInventarios.Models
         public decimal? ProductoCan { get; set; }
     }
 }
-

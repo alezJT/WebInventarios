@@ -17,16 +17,16 @@ namespace WebInventarios.Models
         }
 
         public virtual DbSet<Inventarios> Inventarios { get; set; } = null!;
-        public virtual DbSet<Productos> Productos { get; set; } = null!;
+        public virtual DbSet<Producto> Productos { get; set; } = null!;
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if(!optionsBuilder.IsConfigured) 
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB; DataBase =Inventarios;Trusted_Connection=True;MultipleActiveResultSets=true;");
-            }
-        }
+//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//        {
+//            if(!optionsBuilder.IsConfigured) 
+//            {
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+//                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB; DataBase =Inventarios;Trusted_Connection=True;MultipleActiveResultSets=true;");
+//            }
+//        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -39,11 +39,11 @@ namespace WebInventarios.Models
                 entity.Property(e => e.ProductoId).HasColumnName("ProductoID");
             });
 
-            modelBuilder.Entity<Productos>(entity =>
+            modelBuilder.Entity<Producto>(entity =>
             {
                 //entity.HasNoKey();
 
-
+                //entity.HasKey(e => e.ProductoId);
                 entity.Property(e => e.ProductoDesc)
                     .HasMaxLength(50)
                     .IsFixedLength();
