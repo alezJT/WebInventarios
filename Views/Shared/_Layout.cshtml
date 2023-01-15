@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - WebInventarios</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebInventarios.styles.css" asp-append-version="true" />
 </head>
@@ -22,8 +23,14 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+                        
+                    </ul>
+                    <ul class="navbar-nav flex-row flex-wrap ms-md-auto" >
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Productos" asp-action="Index">Productos</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Productos" asp-action="Index">Productos <i class="bi bi-clipboard-check"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Inventarios" asp-action="Index">Inventarios <i class="bi bi-clipboard-check"></i></a>
                         </li>
                     </ul>
                 </div>
