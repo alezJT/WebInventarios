@@ -1,0 +1,28 @@
+﻿@model List<Producto>
+
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>@ViewData["Title"] - WebInventarios</title>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.css" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/WebInventarios.styles.css" asp-append-version="true" />
+@{
+    Layout = null;
+}
+
+
+<div class="container-fluid">
+    <div class="card mt-2">
+        <div class="card-header text-info">
+            
+        </div>
+        <div class="card-body">
+            <div id="view-all">
+                @*@await Html.PartialAsync("_ViewAllProductos", Model)*@
+                <h1>Editar</h1>
+            </div>
+        </div>
+    </div>
+</div>
