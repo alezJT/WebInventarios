@@ -1,4 +1,4 @@
-﻿@model List<Producto>
+﻿@model Producto
 
 
 <meta charset="utf-8" />
@@ -21,6 +21,28 @@
                 </div>
                 <div class="card-body">
                     <div id="view-all">
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            @*<div class="form-group">
+
+                            <label asp-for="ProdcutoId" class="control-label"></label>
+                            <input asp-for="ProdcutoId" class="form-control"/>
+                            <span asp-validation-for="ProdcutoId" class="text-danger"></span>
+                            </div>*@
+                          
+                            <div class="form-group">
+                                <label asp-for="ProductoDesc" class="control-label"></label>
+                                <input asp-for="ProductoDesc" class="form-control" />
+                                <span asp-validation-for="ProductoDesc" class="text-danger"></span>
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                <input type="submit" value="Crear" Class="btn btn-primary" />
+                            </div>
+
+                        </form>
+                      
 
                     </div>
                 </div>

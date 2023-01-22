@@ -36,6 +36,7 @@ namespace WebInventarios.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
         {
+
             try
             {
                 return RedirectToAction(nameof(Index));
