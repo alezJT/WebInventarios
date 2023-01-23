@@ -34,8 +34,24 @@ namespace WebInventarios.Controllers
         // POST: ProductosController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task  <ActionResult> Create(string ProductoDesc )
         {
+            if( ProductoDesc == null )
+            {
+                return View("No_es");
+            }
+
+            else
+            {
+                var producto = new Producto()
+                {
+                    ProductoDesc = ProductoDesc 
+                };
+                    
+                _context.Productos.Add(producto);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
 
             try
             {
