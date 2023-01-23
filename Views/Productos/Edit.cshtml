@@ -1,5 +1,4 @@
-﻿@model List<Producto>
-
+﻿@model Producto
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,7 +20,38 @@
                     </div>
                     <div class="card-body">
                         <div id="view-all">
-                            
+                        <form asp-action="Edit" asp-route-id="@Model.ProductoId">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="ProductoId" />
+
+                            <div class="form-group">
+                                <label asp-for="ProductoId" class="control-label"></label>
+                                <input asp-for="ProductoId" class="form-control" disabled />
+                                <span asp-validation-for="ProductoId" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="ProductoDesc" class="control-label"></label>
+                                <input asp-for="ProductoDesc" class="form-control" />
+                                <span asp-validation-for="ProductoDesc" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ProductoComentario" class="control-label"></label>
+                                <input asp-for="ProductoComentario" class="form-control" />
+                                <span asp-validation-for="ProductoComentario" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ProductoCan" class="control-label"></label>
+                                <input asp-for="ProductoCan" class="form-control" />
+                                <span asp-validation-for="ProductoCan" class="text-danger"></span>
+                            </div>
+
+                            <hr />
+                            <div class="form-group">
+                                <input type="submit" value="Crear" Class="btn btn-primary" />
+                            </div>
+
+                        </form>
                         </div>
                     </div>
                 </div>

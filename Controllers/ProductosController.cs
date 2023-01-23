@@ -64,9 +64,9 @@ namespace WebInventarios.Controllers
         }
 
         // GET: ProductosController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int proid)
         {
-            return View();
+            return View(proid);
         }
 
         // POST: ProductosController/Edit/5
