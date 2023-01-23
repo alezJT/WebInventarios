@@ -64,9 +64,11 @@ namespace WebInventarios.Controllers
         }
 
         // GET: ProductosController/Edit/5
-        public ActionResult Edit(int proid)
+        public async Task <ActionResult> Edit(int proid = 0)
         {
-            return View(proid);
+            Producto producto = await _context.Productos.FindAsync(proid);
+
+            return View(producto);
         }
 
         // POST: ProductosController/Edit/5
@@ -74,13 +76,16 @@ namespace WebInventarios.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                return View(producto);
+
             }
-            catch
+            else
             {
-                return View();
+                _context.Update(producto);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
             }
         }
 
