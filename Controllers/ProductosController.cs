@@ -34,19 +34,21 @@ namespace WebInventarios.Controllers
         // POST: ProductosController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task  <ActionResult> Create(string ProductoDesc )
+        public async Task  <ActionResult> Create(Producto producto )
         {
-            if( ProductoDesc == null )
+            if( producto == null )
             {
                 return View("No_es");
             }
 
             else
             {
-                var producto = new Producto()
-                {
-                    ProductoDesc = ProductoDesc 
-                };
+                //var producto = new Producto()
+                //{
+                //    ProductoDesc = ProductoDesc ,
+                //    ProductoComentario = ProductoDesc,
+                //    ProductoCan = ProductoCan
+                //};
                     
                 _context.Productos.Add(producto);
                 await _context.SaveChangesAsync();
@@ -74,7 +76,7 @@ namespace WebInventarios.Controllers
         // POST: ProductosController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task <ActionResult> Edit(int id, Producto producto)
         {
             if (!ModelState.IsValid)
             {
