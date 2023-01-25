@@ -85,7 +85,8 @@ namespace WebInventarios.Controllers
         }
 
         // GET: ProductosController/Delete/5
-        public ActionResult Delete(int id)
+        [HttpGet]
+        public ActionResult Delete(int id ,int oo)
         {
             return View("Delete");
         }
@@ -93,21 +94,15 @@ namespace WebInventarios.Controllers
         // POST: ProductosController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task <ActionResult> Delete(int id, Producto producto)
+        public async Task<ActionResult> Delete(int ProductoId)
         {
-            if (ModelState.IsValid)
-            {
-               
-                ModelState.AddModelError(string.Empty, "Ya existe un producto con el mismo nombre.");
-                return RedirectToAction("Delete");
-            }
-            else
-            {
+            Producto producto =  await _context.Productos.FindAsync(ProductoId);
+           
+            
                 _context.Remove(producto);
                 await _context.SaveChangesAsync();
-                ModelState.AddModelError(string.Empty, "Ya existe un producto con el mismo nombre12.");
                 return RedirectToAction("Index");
-            }
+            
 
         }
             
