@@ -34,8 +34,8 @@
                 <td>
                    
                     @*<a asp-action="Delete" asp-route-id="@producto.ProductoId" class="btn btn-danger deleteItem">Eliminar</a>*@
-                    <a asp-action="Edit" class="btn btn-info" asp-route-proid="@producto.ProductoId">Editar</a>
-                    <button data-id="@producto.ProductoId" class="btn btn-sm btn-danger deleteItem" data-bs-toggle="modal" data-bs-target="#deleteDialog"><i class="fa fa-trash"></i></button>
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-proid="@producto.ProductoId"><i class="bi bi-pencil-square"></i></a>
+                    <button data-id="@producto.ProductoId" class="btn btn-sm btn-danger deleteItem" data-bs-toggle="modal" data-bs-target="#deleteDialog"><i class="bi bi-trash"></i></button>
                 </td>
             </tr>
 
