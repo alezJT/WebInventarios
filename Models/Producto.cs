@@ -4,6 +4,7 @@ namespace WebInventarios.Models
 {
     public partial class Producto
     {
+        [Display(Name = "Producto Codigo")]
         public int ProductoId { get; set; }
 
         [Display(Name = "Producto Nombre")]

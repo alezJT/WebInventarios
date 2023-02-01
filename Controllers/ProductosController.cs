@@ -85,23 +85,26 @@ namespace WebInventarios.Controllers
         }
 
         // GET: ProductosController/Delete/5
-        [HttpGet]
-        public ActionResult Delete(int id ,int oo)
-        {
-            return View("Delete");
-        }
+        //[HttpGet]
+        //public ActionResult Delete(int id ,int oo)
+        //{
+        //    return View("Delete");
+        //}
 
-        // POST: ProductosController/Delete/5
-        [HttpPost]
+        //// POST: ProductosController/Delete/5
+        //[HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Delete(int ProductoId)
         {
             Producto producto =  await _context.Productos.FindAsync(ProductoId);
-           
-            
-                _context.Remove(producto);
+
+            if (producto == null)
+            {
+                return NotFound();
+            }
+            _context.Remove(producto);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             
 
         }
