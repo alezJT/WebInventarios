@@ -92,7 +92,8 @@ namespace WebInventarios.Controllers
         //}
 
         //// POST: ProductosController/Delete/5
-        //[HttpPost]
+        [HttpPost]
+      
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Delete(int ProductoId)
         {
