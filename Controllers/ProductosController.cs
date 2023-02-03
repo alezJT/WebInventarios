@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebInventarios.Models;
+using WebInventarios.Helpers;
+using static WebInventarios.Helpers.ModalHelper;    
 
 namespace WebInventarios.Controllers
 {
@@ -92,12 +94,11 @@ namespace WebInventarios.Controllers
         //}
 
         //// POST: ProductosController/Delete/5
-        [HttpPost]
-      
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(int ProductoId)
+
+        [NoDirectAccess]
+        public async Task<ActionResult> Delete(int Id)
         {
-            Producto producto =  await _context.Productos.FindAsync(ProductoId);
+            Producto producto =  await _context.Productos.FindAsync(Id);
 
             if (producto == null)
             {
