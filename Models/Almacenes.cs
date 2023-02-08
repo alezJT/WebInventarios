@@ -11,6 +11,6 @@ namespace WebInventarios.Models
         public string? DescripcionAlmacen { get; set; }
 
         [Display(Name = "Referencia del Almacen")]
-        public string? ReferenciaAmacen { get; set; }
+        public string? ReferenciaAlmacen { get; set; }
     }
 }

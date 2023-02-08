@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebInventarios.Models;
+using static WebInventarios.Helpers.ModalHelper;
 
 namespace WebInventarios.Controllers
 {
@@ -18,9 +19,10 @@ namespace WebInventarios.Controllers
             return View(await _context.Almacenes.ToListAsync());
         }
 
+        [NoDirectAccess]
         public async Task<IActionResult> Crear()
         {
-
+            return View();
         }
 
     }

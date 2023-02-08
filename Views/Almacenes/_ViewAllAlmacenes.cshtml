@@ -3,7 +3,7 @@
 <a class="btn btn-success" asp-action="Create">Nuevo Almacen</a>
 
 <hr style="visibility:hidden" />
-<a onclick="showInPopup('@Url.Action("Create", "Almacenes", new { }, Context.Request.Scheme)' , 'Nuevo Almacen')" class="btn btn-sm btn-primary text-white"><i class="fa fa-plus-circle"></i> Almacenes</a>
+<a onclick="showInPopup('@Url.Action("Crear", "Almacenes", new { }, Context.Request.Scheme)' , 'Nuevo Almacen')" class="btn btn-sm btn-primary text-white"><i class="fa fa-plus-circle"></i>Almacenes</a>
 
 <table class="table" id="AlmacenesTabla">
     <thead>
@@ -27,7 +27,7 @@
 
                 <td>@Html.DisplayFor(a=>almacenes.DescripcionAlmacen) </td>
 
-                <td>@Html.DisplayFor(a=>almacenes.ReferenciaAmacen) </td>
+                <td>@Html.DisplayFor(a=>almacenes.ReferenciaAlmacen) </td>
 
                 <td>
 
