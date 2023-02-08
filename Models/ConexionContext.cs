@@ -19,6 +19,8 @@ namespace WebInventarios.Models
         public virtual DbSet<Inventarios> Inventarios { get; set; } = null!;
         public virtual DbSet<Producto> Productos { get; set; } = null!;
 
+        public virtual DbSet<Almacenes> Almacenes { get; set; } = null!;
+
 //        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 //        {
 //            if(!optionsBuilder.IsConfigured) 
@@ -49,6 +51,14 @@ namespace WebInventarios.Models
                     .IsFixedLength();
 
                 entity.Property(e => e.ProductoId).HasColumnName("ProductoID");
+            });
+            modelBuilder.Entity<Almacenes>(entity =>
+            {
+                entity.Property(a => a.IDAlmacen).HasColumnName("IDAlmacen");
+
+                entity.Property(a => a.DescripcionAlmacen);
+                entity.HasKey(a => a.IDAlmacen);
+
             });
 
             OnModelCreatingPartial(modelBuilder);
