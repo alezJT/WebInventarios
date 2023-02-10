@@ -2,5 +2,6 @@
 {
     public class CrearAlmacenesViewModel
     {
+        public int Id { get; set; }
     }
 }
