@@ -8,6 +8,7 @@ namespace WebInventarios.Models
         public int IDAlmacen { get; set; }
 
         [Display(Name = "Descripcion del Almacen")]
+        //[Required(ErrorMessage ="El campo {0} es requerido")]
         public string? DescripcionAlmacen { get; set; }
 
         [Display(Name = "Referencia del Almacen")]

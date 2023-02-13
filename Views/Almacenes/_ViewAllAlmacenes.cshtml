@@ -30,8 +30,7 @@
 
                 <td>
 
-                    @*<a asp-action="Delete" asp-route-id="@producto.ProductoId" class="btn btn-danger deleteItem">Eliminar</a>*@
-                    <a asp-action="Edit" class="btn btn-outline-warning" asp-route-proid="@almacenes.IDAlmacen"><i style="font-size: 1rem" class="bi bi-pencil-square"></i></a>
+                    <a onclick="showInPopup('@Url.Action("Editar", "Almacenes", new { IDAlmacen = almacenes.IDAlmacen}, Context.Request.Scheme)' , 'Actualizar Almacen')" class="btn btn-outline-warning"><i style="font-size: 1rem" class="bi bi-pencil-square"></i></a>
                     <button data-id="@almacenes.IDAlmacen" class="btn btn-outline-danger deleteItem" data-bs-toggle="modal" data-bs-target="#deleteDialog"><i style="font-size: 1rem" class="bi bi-trash"></i></button>
                 </td>
             </tr>

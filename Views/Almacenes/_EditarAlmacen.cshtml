@@ -2,6 +2,14 @@
 
 <div class="row">
     <div class="col-md-6">
+
+        <div class="form group">
+
+            <label asp-for="IDAlmacen" class="control-label"> </label>
+            <input asp-for="IDAlmacen"  />
+            <span asp-validation-for="IDAlmacen"></span>
+            <br />
+        </div>
         <div class="form group">
 
             <label asp-for="DescripcionAlmacen" class="control-label"> </label>
@@ -16,5 +24,5 @@
             <span asp-validation-for="ReferenciaAlmacen"></span>
         </div>
     </div>
-       
+
 </div>
