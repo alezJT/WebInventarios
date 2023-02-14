@@ -131,7 +131,7 @@ namespace WebInventarios.Controllers
             return Json(new
                                 {
                                     isValid = true,
-                                    html = ModalHelper.RenderRazorViewToString(this, "_ViewAllAlmacenes", _context.Almacenes)
+                                    html = ModalHelper.RenderRazorViewToString(this, "Editar", _context.Almacenes)
                                 });
         }
 
