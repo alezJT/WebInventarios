@@ -61,10 +61,15 @@ namespace WebInventarios.Controllers
         }
 
         // GET: ProductosController/Edit/5
-        public async Task <ActionResult> Edit(int proid = 0)
+        [NoDirectAccess]
+        public async Task <ActionResult> Edit(int ProductoID = 0)
         {
-            Producto producto = await _context.Productos.FindAsync(proid);
+            Producto producto = await _context.Productos.FindAsync(ProductoID);
 
+            if ( producto == null )
+            {
+                return NotFound();
+            }
             return View(producto);
         }
 

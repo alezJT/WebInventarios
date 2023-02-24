@@ -80,8 +80,6 @@ namespace WebInventarios.Controllers
             {
                 return NotFound();
             }
-
-
             return View(almacenes);
         }
 
