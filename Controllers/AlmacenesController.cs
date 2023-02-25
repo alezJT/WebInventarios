@@ -133,7 +133,23 @@ namespace WebInventarios.Controllers
                                 });
         }
 
-        
+
+
+        [NoDirectAccess]
+        public async Task<ActionResult> Delete(int Id)
+        {
+            Almacenes almacenes = await _context.Almacenes.FindAsync(Id);
+
+            if (almacenes == null)
+            {
+                return NotFound();
+            }
+            _context.Remove(almacenes);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
+
+        }
 
     }
 }
