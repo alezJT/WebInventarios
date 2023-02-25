@@ -35,7 +35,7 @@ namespace WebInventarios.Controllers
 
         // POST: ProductosController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task  <ActionResult> Create(Producto producto )
         {
             if( producto == null )
