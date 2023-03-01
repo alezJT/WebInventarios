@@ -4,20 +4,34 @@
 }
 
 <flash dismissable="true" />
+<div class="container">
+    <main role="main" class="pb-3">
+        <div class="container-fluid">
+            <div class="card mt-2">
+                <div class="card-header text-info">
+                    <h1>Editar</h1>
+                </div>
+                <div class="card-body">
+                    <div id="view-all">
+                            <div class="container smfont">
+                                <form asp-action="Crear" enctype="multipart/form-data" autocomplete="off"  onsubmit="return jQueryAjaxPost(this);">
+                                    <div class="box-body">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <partial name="_CrearAlmacenes" />
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-sm btn-primary" data-bs-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                                        <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-save"></i> Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<div class="container smfont">
-    <form asp-action="Crear" enctype="multipart/form-data" autocomplete="off"  onsubmit="return jQueryAjaxPost(this);">
-        <div class="box-body">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <partial name="_CrearAlmacenes" />
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-sm btn-primary" data-bs-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
-            <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-save"></i> Guardar</button>
-        </div>
-    </form>
+    </main>
 </div>
-
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

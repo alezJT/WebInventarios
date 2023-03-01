@@ -2,7 +2,7 @@
 
 
 
-<a class="btn btn-success" asp-action="Create">Nuevo Producto</a>
+<a onclick="showInPopup('@Url.Action("Create", "Productos", new { }, Context.Request.Scheme)' , 'Nuevo Producto')" class="btn btn-success">Nuevo Producto</a>
 
 <hr style="visibility:hidden" />
 

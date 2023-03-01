@@ -28,6 +28,7 @@ namespace WebInventarios.Controllers
         }
 
         // GET: ProductosController/Create
+        [NoDirectAccess]
         public ActionResult Create()
         {
             return View();
