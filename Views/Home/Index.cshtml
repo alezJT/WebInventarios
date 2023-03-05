@@ -19,15 +19,19 @@
 
 <div class="row row-cols-1 row-cols-md-5 g-4 mt-1">
    
+    <select onchange="AlmacenSeleccionado(this)">
+
+        <option value="">Seleccione un Almacen </option>
         @foreach (var almacenes in Model.Almacenes)
         {
-        
-            <span> <a href="@Url.Action("Index", "Home", new { searchString = almacenes.IDAlmacen})"><strong> @almacenes.IDAlmacen - @almacenes.DescripcionAlmacen&nbsp;  </strong></a></span>
-       
-        }
-    
-</div>
+            <option value="@almacenes.IDAlmacen">
+               <strong> @almacenes.IDAlmacen - @almacenes.DescripcionAlmacen&nbsp;  </strong>
 
+        </option>
+           
+        }
+    </select>
+</div>
 
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
@@ -110,3 +114,11 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+
+       <script>
+        function AlmacenSeleccionado(selectElement) {
+            var selectedValue = selectElement.value;
+            window.location.href = '/Home/Index?IDAlmacen=' + selectedValue;
+        }
+       </script>

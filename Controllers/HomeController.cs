@@ -21,7 +21,7 @@ namespace WebInventarios.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? pageNumber)
+        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? pageNumber, int? IDAlmacen)
         {
            
       
