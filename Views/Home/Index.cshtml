@@ -1,31 +1,109 @@
 ﻿@model WebInventarios.Models.ViewModels.HomeProductosViewModel
+
 @{
     ViewData["Title"] = "Home Page";
 }
 
+<style type="text/css">
+    .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border: 1px solid lightgray;
+        box-shadow: 2px 2px 8px 4px #d3d3d3d1;
+        border-radius: 15px;
+        font-family: sans-serif;
+        margin: 5px;
+    }
+</style>
+
+<div class="row row-cols-1 row-cols-md-5 g-4 mt-1">
+   
+        @foreach (var almacenes in Model.Almacenes)
+        {
+        
+            <span> <a href="@Url.Action("Index", "Home", new { searchString = almacenes.IDAlmacen})"><strong> @almacenes.IDAlmacen - @almacenes.DescripcionAlmacen&nbsp;  </strong></a></span>
+       
+        }
+    
+</div>
 
 
-@foreach (var item in Model.Productos)
-{
-    <div class="col">
-        <div class="card h-100">
-            <div class="text-center zoom">
-               @* <img src="@item.ImageFullPath" style="height:150px; max-width:200px;" class="text-center" alt=@item.Pro />*@
-            </div>
-            <div class="card-body">
-                <h5 class="card-title text-navy"> @item.ProductoDesc</h5>
-                <p class="card-text smfnt">@item.ProductoDesc</p>
-                <h5 class="text-muted">@Html.DisplayFor(modelItem => item.ProductoCan)</h5>
-            </div>
-            <div class="card-footer text-center">
-                <a asp-action="Details" asp-route-id="@item.ProductoId" class="btn btn-sm btn-secondary">Details</a>
-                <a asp-action="Add" asp-route-id="@item.ProductoId" class="btn btn-sm btn-primary">Add to Cart</a>
-            </div>
-        </div>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Buscar por nombre o Almacen: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Buscar" class="btn btn-warning" />
+            <a asp-action="Index" class="btn btn-success">Ver Todos los Productos</a>
+        </p>
     </div>
+</form>
+
+
+
+
+
+<div class="row row-cols-1 row-cols-md-4 g-4 mt-1">
+    @if (Model.Productos.Count() > 0)
+    {
+                @foreach (var item in Model.Productos)
+                {
+                    <div class="col">
+                        <div class="card h-100">
+                            <div class="text-center zoom">
+                               @* <img src="@item.ImageFullPath" style="height:150px; max-width:200px;" class="text-center" alt=@item.Pro />*@
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text-navy"> @item.ProductoDesc</h5>
+                                <p class="card-text smfnt">@item.ProductoId</p>
+                                <p class="card-text smfnt">@item.ProductoDesc</p>
+                                <h5 class="text-muted">@Html.DisplayFor(modelItem => item.ProductoCan)</h5>
+                            </div>
+                            <div class="card-footer text-center">
+                               @* <a asp-action="Details" asp-route-id="@item.ProductoId" class="btn btn-sm btn-secondary">Details</a>
+                                <a asp-action="Add" asp-route-id="@item.ProductoId" class="btn btn-sm btn-primary">Add to Cart</a>*@
+                            </div>
+                        </div>
+                    </div>
+                }
+
+    }
+    else
+    {
+        <h3>No hay productos con su criterio de búsqueda</h3>
+    }
+</div>
+
+
+
+
+@{
+    var prevDisabled = !Model.Productos.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Productos.HasNextPage ? "disabled" : "";
 }
 
+<div class="mt-5">
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.Productos.PageIndex - 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-warning @prevDisabled">
+        Anterior
+    </a>
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.Productos.PageIndex + 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-success @nextDisabled">
+        Siguiente
+    </a>
+</div>
 
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
 
 
 <div class="text-center">
