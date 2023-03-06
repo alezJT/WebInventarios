@@ -35,7 +35,7 @@ namespace WebInventarios.Controllers
         {
             Almacenes almacenes = new()
             {
-                IDAlmacen = model.IDAlmacen,
+                //IDAlmacen = model.IDAlmacen,
                 DescripcionAlmacen = model.DescripcionAlmacen,
                 ReferenciaAlmacen = model.ReferenciaAlmacen,
             };
