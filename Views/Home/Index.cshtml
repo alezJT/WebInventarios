@@ -22,6 +22,7 @@
     <select onchange="AlmacenSeleccionado(this)">
 
         <option value="">Seleccione un Almacen </option>
+         
         @foreach (var almacenes in Model.Almacenes)
         {
             <option value="@almacenes.IDAlmacen">
@@ -32,7 +33,7 @@
         }
     </select>
 </div>
-
+<br>
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>
