@@ -7,5 +7,7 @@
         public int IDAlmacen { get; set; }
         public int CantidadInv { get; set; }
 
+        public int Cantidad { get;set; }
+
     }
 }
