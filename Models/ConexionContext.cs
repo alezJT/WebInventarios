@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using WebInventarios.Models.ViewModels;
 
 namespace WebInventarios.Models
 {
@@ -60,6 +61,10 @@ namespace WebInventarios.Models
                 entity.HasKey(a => a.IDAlmacen);
 
             });
+
+            modelBuilder.Entity<ProductosAlmacen>(entity =>
+                entity.HasNoKey()
+                ); ;
 
             OnModelCreatingPartial(modelBuilder);
         }
