@@ -46,7 +46,20 @@
                                 <input asp-for="ProductoCan" class="form-control" />
                                 <span asp-validation-for="ProductoCan" class="text-danger"></span>
                             </div>
-                            
+
+                            <select onchange="AlmacenSeleccionado(this)">
+
+                                <option value="">Seleccione un Almacen </option>
+
+                                @foreach (var almacenes in Model.Almacenes)
+                                {
+                                    <option value="@almacenes.IDAlmacen">
+                                        <strong> @almacenes.IDAlmacen - @almacenes.DescripcionAlmacen&nbsp;  </strong>
+
+                                    </option>
+
+                                }
+                            </select>
                             <hr />
                             <div class="form-group">
                                 <input type="submit" value="Crear" Class="btn btn-outline-primary" />

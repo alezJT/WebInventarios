@@ -15,5 +15,7 @@ namespace WebInventarios.Models
 
         [Display(Name = "Producto Cantidad")]
         public decimal? ProductoCan { get; set; }
+
+        public ICollection<Almacenes>? Almacenes { get; set; }
     }
 }
