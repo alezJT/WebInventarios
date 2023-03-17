@@ -3,7 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebInventarios.Models;
 using WebInventarios.Helpers;
-using static WebInventarios.Helpers.ModalHelper;    
+using static WebInventarios.Helpers.ModalHelper;
+using WebInventarios.Comun;
 
 namespace WebInventarios.Controllers
 {
@@ -29,9 +30,16 @@ namespace WebInventarios.Controllers
 
         // GET: ProductosController/Create
         [NoDirectAccess]
-        public ActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+
+
+            CrearProductosViewModel model = new()
+            {
+                Almacenes = _context.Almacenes.ToList(),
+
+            };
+            return View(model);
         }
 
         // POST: ProductosController/Create

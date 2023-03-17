@@ -43,27 +43,7 @@ namespace WebInventarios.Controllers
             {
                 query = query.Where(p => (p.ProductoDesc.ToLower().Contains(searchString.ToLower()))) ;
             }
-            //else
-            //{
-            //    query = query.Where(p => p.Stock > 0);
-            //}
-
-
-            //switch (sortOrder)
-            //{
-            //    case "NameDesc":
-            //        query = query.OrderByDescending(p => p.Name);
-            //        break;
-            //    case "Price":
-            //        query = query.OrderBy(p => p.Price);
-            //        break;
-            //    case "PriceDesc":
-            //        query = query.OrderByDescending(p => p.Price);
-            //        break;
-            //    default:
-            //        query = query.OrderBy(p => p.Name);
-            //        break;
-            //}
+          
 
             HomeProductosViewModel model = new()
             {
