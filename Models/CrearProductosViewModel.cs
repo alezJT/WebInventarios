@@ -11,6 +11,6 @@ namespace WebInventarios.Models
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public int IDAlmacen { get; set; }
         public ICollection<Almacenes>? Almacenes1 { get; set; }
-        public ICollection<SelectListItem>? Almacenes { get; set; }
+        public IEnumerable<SelectListItem>? Almacenes { get; set; }
     }
 }

@@ -46,7 +46,7 @@
                                 <input asp-for="ProductoCan" class="form-control" />
                                 <span asp-validation-for="ProductoCan" class="text-danger"></span>
                             </div>
-                            <div class="form-group">
+                            @*<div class="form-group">
                                 <select id="IDAlmacen" onchange="AlmacenSeleccionado(this)" onclick="guardarValor()">
                                     <option value="">Seleccione un Almacen</option>
                                     @foreach (var almacenes in Model.Almacenes)
@@ -56,7 +56,7 @@
                                         </option>
                                     }
                                 </select>
-                            </div>
+                            </div>*@
 
                             <div class="form-group">
                                 <span class="required">*</span>

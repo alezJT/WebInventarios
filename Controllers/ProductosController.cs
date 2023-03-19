@@ -12,10 +12,12 @@ namespace WebInventarios.Controllers
     public class ProductosController : Controller
     {
         private readonly ConexionContext _context;
+        private readonly IComboshelpers _combos;
 
-        public ProductosController(ConexionContext  context)
+        public ProductosController(ConexionContext  context, IComboshelpers combos)
         {
             _context = context;
+            _combos = combos;
         }
         // GET: ProductosController
         public async Task <IActionResult> Index()
@@ -33,11 +35,9 @@ namespace WebInventarios.Controllers
         [NoDirectAccess]
         public async Task<IActionResult> Create()
         {
-
-
             CrearProductosViewModel model = new()
             {
-                Almacenes = _context.Almacenes.ToList(),
+                Almacenes = await _combos.GetComboAlmacenes()
 
             };
             return View(model);
