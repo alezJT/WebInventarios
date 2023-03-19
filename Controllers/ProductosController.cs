@@ -5,6 +5,7 @@ using WebInventarios.Models;
 using WebInventarios.Helpers;
 using static WebInventarios.Helpers.ModalHelper;
 using WebInventarios.Comun;
+using WebInventarios.Models.ViewModels;
 
 namespace WebInventarios.Controllers
 {
@@ -45,7 +46,7 @@ namespace WebInventarios.Controllers
         // POST: ProductosController/Create
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public async Task  <ActionResult> Create(Producto producto )
+        public async Task  <ActionResult> Create(Producto producto, int IDAlmacen)
         {
             if( producto == null )
             {
@@ -54,18 +55,23 @@ namespace WebInventarios.Controllers
 
             else
             {
-                //var producto = new Producto()
-                //{
-                //    ProductoDesc = ProductoDesc ,
-                //    ProductoComentario = ProductoDesc,
-                //    ProductoCan = ProductoCan
-                //};
-                    
+                if (IDAlmacen > 0)
+                {
+                   var NEWProductosAlmacen =  new ProductosAlmacen 
+                    {
+                        IDAlmacen = IDAlmacen,
+                        ProductoId = producto.ProductoId
+                    };
+
+                    _context.ProductosAlmacens.Add(NEWProductosAlmacen);
+                    await _context.SaveChangesAsync();
+                }
+
                 _context.Productos.Add(producto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-
+           
            
         }
 

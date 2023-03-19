@@ -21,7 +21,7 @@
                 </div>
                 <div class="card-body">
                     <div id="view-all">
-                        <form asp-action="Create">
+                        <form asp-action="Create" onblur="InviarValor()">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                             @*<div class="form-group">
@@ -46,23 +46,27 @@
                                 <input asp-for="ProductoCan" class="form-control" />
                                 <span asp-validation-for="ProductoCan" class="text-danger"></span>
                             </div>
+                            <div class="form-group">
+                                <select id="IDAlmacen" onchange="AlmacenSeleccionado(this)" onclick="guardarValor()">
+                                    <option value="">Seleccione un Almacen</option>
+                                    @foreach (var almacenes in Model.Almacenes)
+                                    {
+                                        <option value="@almacenes.IDAlmacen">
+                                            <strong>@almacenes.IDAlmacen - @almacenes.DescripcionAlmacen</strong>
+                                        </option>
+                                    }
+                                </select>
+                            </div>
 
-                            <select onchange="AlmacenSeleccionado(this)">
-
-                                <option value="">Seleccione un Almacen </option>
-
-                                @foreach (var almacenes in Model.Almacenes)
-                                {
-                                    <option value="@almacenes.IDAlmacen">
-                                        <strong> @almacenes.IDAlmacen - @almacenes.DescripcionAlmacen&nbsp;  </strong>
-
-                                    </option>
-
-                                }
-                            </select>
+                            <div class="form-group">
+                                <span class="required">*</span>
+                                <label asp-for="IDAlmacen" class="control-label"></label>
+                                <select asp-for="IDAlmacen" asp-items="Model.Almacenes" class="form-control"></select>
+                                <span asp-validation-for="IDAlmacen" class="text-danger"></span>
+                            </div>
                             <hr />
                             <div class="form-group">
-                                <input type="submit" value="Crear" Class="btn btn-outline-primary" />
+                                <input type="submit" value="Crear" Class="btn btn-outline-primary"  />
                                 <a asp-action="Index" class="btn btn-outline-success">Regresar</a>
                             </div>
 
@@ -76,3 +80,28 @@
 
     </main>
 </div>
+
+<script>
+    var valorSeleccionado;
+
+    function guardarValor() {
+        valorSeleccionado = document.getElementById("IDAlmacen").value;
+    }
+
+    function InviarValor() {
+        var valorSeleccionado = document.getElementById("IDAlmacen").value;
+        $.ajax({
+            type: "POST",
+            url: "/Productos/Create",
+            data: { IDAlmacen: valorSeleccionado },
+            success: function (result) {
+                // Aquí puedes realizar acciones con el resultado devuelto por el controlador
+            },
+            error: function (xhr, status, error) {
+                // Aquí puedes manejar los errores que puedan ocurrir
+            }
+        });
+    }
+</script>
+
+

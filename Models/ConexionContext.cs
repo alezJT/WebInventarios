@@ -19,7 +19,7 @@ namespace WebInventarios.Models
 
         public virtual DbSet<Inventarios> Inventarios { get; set; } = null!;
         public virtual DbSet<Producto> Productos { get; set; } = null!;
-
+        public virtual DbSet<ProductosAlmacen> ProductosAlmacens { get;set; } = null!;
         public virtual DbSet<Almacenes> Almacenes { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
