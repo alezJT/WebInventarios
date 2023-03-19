@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebInventarios.Models;
 using Vereyon.Web;
+using WebInventarios.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,7 @@ builder.Services.AddDbContext<ConexionContext>(conexion =>
 });
 
 builder.Services.AddFlashMessage();
+builder.Services.AddScoped<IComboshelpers, CombosHelpers>();
 
 var app = builder.Build();
 

@@ -37,7 +37,7 @@ namespace WebInventarios.Controllers
         {
             CrearProductosViewModel model = new()
             {
-                Almacenes = await _combos.GetComboAlmacenes()
+                Almacenes = await _combos.GetComboAlmacenes(),
 
             };
             return View(model);
