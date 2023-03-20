@@ -55,24 +55,28 @@ namespace WebInventarios.Controllers
 
             else
             {
+                _context.Productos.Add(producto);
+                await _context.SaveChangesAsync();
+
+                //  int ProductoID = await _context.Productos.FindAsync(producto.ProductoDesc);
+
+                var Productos = await _context.Productos.Where(p=> p.ProductoDesc == producto.ProductoDesc).FirstOrDefaultAsync();
+
                 if (IDAlmacen > 0)
                 {
-                   var NEWProductosAlmacen =  new ProductosAlmacen 
+                    var NEWProductosAlmacen = new ProductosAlmacen
                     {
                         IDAlmacen = IDAlmacen,
-                        ProductoId = producto.ProductoId
+                        ProductoId = Productos.ProductoId
                     };
 
                     _context.ProductosAlmacens.Add(NEWProductosAlmacen);
                     await _context.SaveChangesAsync();
                 }
-
-                _context.Productos.Add(producto);
-                await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-           
-           
+          
+
         }
 
         // GET: ProductosController/Edit/5

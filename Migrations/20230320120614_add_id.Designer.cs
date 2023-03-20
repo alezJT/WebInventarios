@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebInventarios.Models;
 
@@ -11,9 +12,11 @@ using WebInventarios.Models;
 namespace WebInventarios.Migrations
 {
     [DbContext(typeof(ConexionContext))]
-    partial class ConexionContextModelSnapshot : ModelSnapshot
+    [Migration("20230320120614_add_id")]
+    partial class addid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

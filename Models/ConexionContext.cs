@@ -54,7 +54,7 @@ namespace WebInventarios.Models
             });
 
             modelBuilder.Entity<ProductosAlmacen>(entity =>
-                entity.HasNoKey()
+                entity.Property(p=> p.Id)
                 ); ;
 
             OnModelCreatingPartial(modelBuilder);
