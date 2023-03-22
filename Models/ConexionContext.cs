@@ -37,7 +37,7 @@ namespace WebInventarios.Models
             {
                 //entity.HasNoKey();
 
-                //entity.HasKey(e => e.ProductoId);
+                entity.HasKey(e => e.ProductoId);
                 entity.Property(e => e.ProductoDesc)
                     .HasMaxLength(50)
                     .IsFixedLength();
