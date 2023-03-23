@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using WebInventarios.Models.ViewModels;
 
 namespace WebInventarios.Models
 {
@@ -13,5 +14,9 @@ namespace WebInventarios.Models
 
         [Display(Name = "Referencia del Almacen")]
         public string? ReferenciaAlmacen { get; set; }
+
+        public ICollection<Producto> producto { get; set; }
+        public ProductosAlmacen ProductosAlmacen1 { get; set; }
+        public ICollection<ProductosAlmacen>productosAlmacen { get; set; }
     }
 }

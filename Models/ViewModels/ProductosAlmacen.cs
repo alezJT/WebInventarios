@@ -12,5 +12,12 @@ namespace WebInventarios.Models.ViewModels
         [Display(Name = "Id del Almacen")]
         public int IDAlmacen { get; set; }
 
+        // Navigation properties
+        public Almacenes Almacenes { get; set; }
+        public Producto Producto { get; set; }
+        public ICollection<Producto> Productos { get; set; } // <-- nueva propiedad
+
+
+
     }
 }

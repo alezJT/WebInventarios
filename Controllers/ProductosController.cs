@@ -70,7 +70,7 @@ namespace WebInventarios.Controllers
                         ProductoId = Productos.ProductoId
                     };
 
-                    _context.ProductosAlmacens.Add(NEWProductosAlmacen);
+                    _context.ProductosAlmacen.Add(NEWProductosAlmacen);
                     await _context.SaveChangesAsync();
                 }
                 return RedirectToAction("Index");

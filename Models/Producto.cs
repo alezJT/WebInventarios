@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using WebInventarios.Models.ViewModels;
 
 namespace WebInventarios.Models
 {
@@ -17,5 +18,7 @@ namespace WebInventarios.Models
         public decimal? ProductoCan { get; set; }
 
         //public ICollection<Almacenes>? Almacenes { get; set; }
+
+        public ICollection<ProductosAlmacen> productosAlmacen { get; set; }
     }
 }
