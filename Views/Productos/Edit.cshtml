@@ -1,4 +1,4 @@
-﻿@model Producto
+﻿@model CrearProductosViewModel
 
 
 @{
@@ -48,6 +48,13 @@
                                 <span asp-validation-for="ProductoCan" class="text-danger"></span>
                             </div>
 
+                            <div class="form-group">
+                                <span class="required">*</span>
+                                <label asp-for="IDAlmacen" class="control-label"></label>
+                                <select asp-for="IDAlmacen" asp-items="Model.Almacenes" class="form-control"></select>
+                                <span asp-validation-for="IDAlmacen" class="text-danger"></span>
+                            </div>
+                            <hr />
                             <hr />
                             <div class="form-group">
                                 <input type="submit" value="Editar" Class="btn btn-outline-primary" />

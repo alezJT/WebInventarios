@@ -83,14 +83,29 @@ namespace WebInventarios.Controllers
         [NoDirectAccess]
         public async Task <ActionResult> Edit(int ProductoID = 0)
         {
-            Producto producto = await _context.Productos.FindAsync(ProductoID);
+            if (ProductoID > 0)
 
-            if ( producto == null )
             {
-                return NotFound();
+                Producto producto = await _context.Productos.FindAsync(ProductoID);
+                CrearProductosViewModel model = new()
+                {
+                    Almacenes = await _combos.GetComboAlmacenes(),
+                    ProductoId = producto.ProductoId,
+                    ProductoDesc = producto.ProductoDesc,
+                    ProductoComentario = producto.ProductoComentario,
+                    ProductoCan = producto.ProductoCan,
+                };
+                return View(model);
             }
-            return View(producto);
+            
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
+
+       
+
 
         // POST: ProductosController/Edit/5
         [HttpPost]
