@@ -19,6 +19,7 @@ namespace WebInventarios.Models
 
         //public ICollection<Almacenes>? Almacenes { get; set; }
 
+        public ProductosAlmacen ProductosAlmacen1 { get; set; }
         public ICollection<ProductosAlmacen> productosAlmacen { get; set; }
     }
 }

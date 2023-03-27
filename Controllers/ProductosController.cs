@@ -85,7 +85,14 @@ namespace WebInventarios.Controllers
         {
             if (ProductoID > 0)
 
-            {
+            
+                Almacenes almacenes = await _context.Almacenes.Join(Almacenes,Almacenes => Almacenes.IDAlmacen,
+                           ProductosAlmacen => ProductosAlmacen.IDAlmacen)
+
+                                        .Include(a => a.productosAlmacen)
+                                        .Include(pa => pa.producto)
+                                        .ToListAsync();
+
                 Producto producto = await _context.Productos.FindAsync(ProductoID);
                 CrearProductosViewModel model = new()
                 {
