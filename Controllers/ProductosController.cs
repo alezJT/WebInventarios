@@ -85,13 +85,19 @@ namespace WebInventarios.Controllers
         {
             if (ProductoID > 0)
 
-            
-                Almacenes almacenes = await _context.Almacenes.Join(Almacenes,Almacenes => Almacenes.IDAlmacen,
-                           ProductosAlmacen => ProductosAlmacen.IDAlmacen)
+            {
+                //Almacenes almacenes = await _context.Almacenes.Join(Almacenes,Almacenes => Almacenes.IDAlmacen,
+                //           ProductosAlmacen => ProductosAlmacen.IDAlmacen)
 
-                                        .Include(a => a.productosAlmacen)
-                                        .Include(pa => pa.producto)
-                                        .ToListAsync();
+                //                        .Include(a => a.productosAlmacen)
+                //                        .Include(pa => pa.producto)
+                //                        .ToListAsync();
+
+                //Almacenes almacenes = await _context.ProductosAlmacen
+                //    .Include(a => a.)
+                //    .FirstOrDefaultAsync(pa => pa.ProductoId == ProductoID);
+
+                
 
                 Producto producto = await _context.Productos.FindAsync(ProductoID);
                 CrearProductosViewModel model = new()
@@ -103,12 +109,12 @@ namespace WebInventarios.Controllers
                     ProductoCan = producto.ProductoCan,
                 };
                 return View(model);
-            }
+             }
             
-            else
-            {
-                return RedirectToAction("Index");
-            }
+             else
+                {
+                    return RedirectToAction("Index");
+                }
         }
 
        
@@ -126,6 +132,11 @@ namespace WebInventarios.Controllers
             }
             else
             {
+                if (producto.productosAlmacen == null)
+                {
+                    ProductosAlmacen productosAlmacen = await _context.ProductosAlmacen.FindAsync(producto.ProductoId);
+                }
+               
                 _context.Update(producto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
