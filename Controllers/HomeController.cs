@@ -23,8 +23,8 @@ namespace WebInventarios.Controllers
 
         public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? pageNumber, int? IDAlmacen)
         {
-           
-      
+
+
 
             if (searchString != null)
             {
@@ -32,7 +32,7 @@ namespace WebInventarios.Controllers
             }
             IQueryable<Producto> query = _context.Productos;
 
-            //query = query.Where(p => p.ProductoCan > 0);
+            query = query.Where(p => p.ProductoCan > 0);
 
             int pageSize = 8;
 
@@ -41,9 +41,9 @@ namespace WebInventarios.Controllers
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                query = query.Where(p => (p.ProductoDesc.ToLower().Contains(searchString.ToLower()))) ;
+                query = query.Where(p => (p.ProductoDesc.ToLower().Contains(searchString.ToLower())));
             }
-          
+
 
             HomeProductosViewModel model = new()
             {
@@ -51,6 +51,7 @@ namespace WebInventarios.Controllers
                 Almacenes = await ListasPaginada<Almacenes>.CreateAsync(almacenes, pageNumber ?? 1, pageSize),
 
             };
+
             return View(model);
             
            
