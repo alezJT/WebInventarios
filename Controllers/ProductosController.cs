@@ -132,11 +132,11 @@ namespace WebInventarios.Controllers
             }
             else
             {
-                //if (producto.productosAlmacen == null)
-                //{
-                //    ProductosAlmacen productosAlmacen = await _context.ProductosAlmacen.FindAsync(producto.ProductoId);
-                //}
-               
+                if (producto.productosAlmacen == null)
+                {
+                    ProductosAlmacen productosAlmacen = await _context.ProductosAlmacen.FindAsync(producto.ProductoId);
+                }
+
                 _context.Update(producto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
