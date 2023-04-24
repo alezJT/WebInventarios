@@ -1,0 +1,44 @@
+﻿@model List<Usuarios>
+
+
+
+<a onclick="showInPopup('@Url.Action("Create", "Usuarios", new { }, Context.Request.Scheme)' , 'Nuevo Usuario')" class="btn btn-success">Nuevo Usuario</a>
+
+<hr style="visibility:hidden" />
+
+
+<table class="table" id="Usuarios">
+    <thead>
+        <tr>
+            <th>ID</th>
+
+            <th>Usuario</th>
+
+            <th>Nombre</th>
+
+            <th>Acciones</th>
+
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var usuarios in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(p=>usuarios.IdUsuario) </td>
+
+                <td>@Html.DisplayFor(p=>usuarios.Usuario) </td>
+
+                <td>@Html.DisplayFor(p=>usuarios.UsuarioNombre) </td>
+
+                <td>
+
+                    <a onclick="showInPopup('@Url.Action("Edit", "Usuarios", new { IdUsuarios = usuarios.IdUsuario}, Context.Request.Scheme)' , 'Actualizar Usuario')" class="btn btn-outline-warning"><i style="font-size: 1rem" class="bi bi-pencil-square"></i></a>
+
+                    <button data-id="@usuarios.IdUsuario" class="btn btn-outline-danger deleteItem" data-bs-toggle="modal" data-bs-target="#deleteDialog"><i style="font-size: 1rem" class="bi bi-trash"></i></button>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
