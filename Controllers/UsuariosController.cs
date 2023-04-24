@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebInventarios.Models;
+using static WebInventarios.Helpers.ModalHelper;
 
 namespace WebInventarios.Controllers
 {
@@ -26,6 +27,7 @@ namespace WebInventarios.Controllers
         }
 
         // GET: UsuariosController/Create
+        [NoDirectAccess]
         public ActionResult Create()
         {
             return View();
@@ -34,10 +36,12 @@ namespace WebInventarios.Controllers
         // POST: UsuariosController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task <IActionResult> Create(IFormCollection collection, Usuarios usuarios)
         {
             try
             {
+                _context.Usuarios.Add(usuarios);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             catch
