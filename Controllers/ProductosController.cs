@@ -86,17 +86,7 @@ namespace WebInventarios.Controllers
             if (ProductoID > 0)
 
             {
-                //Almacenes almacenes = await _context.Almacenes.Join(Almacenes,Almacenes => Almacenes.IDAlmacen,
-                //           ProductosAlmacen => ProductosAlmacen.IDAlmacen)
-
-                //                        .Include(a => a.productosAlmacen)
-                //                        .Include(pa => pa.producto)
-                //                        .ToListAsync();
-
-                //Almacenes almacenes = await _context.ProductosAlmacen
-                //    .Include(a => a.)
-                //    .FirstOrDefaultAsync(pa => pa.ProductoId == ProductoID);
-
+             
                 
 
                 Producto producto = await _context.Productos.FindAsync(ProductoID);

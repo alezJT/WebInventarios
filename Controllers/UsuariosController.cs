@@ -51,9 +51,17 @@ namespace WebInventarios.Controllers
         }
 
         // GET: UsuariosController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task <IActionResult> Edit(int IdUsuarios)
         {
-            return View();
+            if (IdUsuarios > 0)
+            {
+                Usuarios usuarios = await _context.Usuarios.FindAsync(IdUsuarios);
+                return View(usuarios);
+            }
+              else
+            {
+                return RedirectToAction(nameof(Create));
+            }
         }
 
         // POST: UsuariosController/Edit/5
