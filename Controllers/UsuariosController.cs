@@ -36,7 +36,7 @@ namespace WebInventarios.Controllers
         // POST: UsuariosController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task <IActionResult> Create(IFormCollection collection, Usuarios usuarios)
+        public async Task <IActionResult> Create( Usuarios usuarios)
         {
             try
             {
