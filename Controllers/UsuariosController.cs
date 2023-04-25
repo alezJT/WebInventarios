@@ -71,10 +71,15 @@ namespace WebInventarios.Controllers
         {
             try
             {
-                if(usuarios == null)
+                if (!ModelState.IsValid)
                 {
-                    return View();
+                    return View(usuarios);
+
                 }
+                //if (usuarios == null)
+                //{
+                //    return View();
+                //}
                  _context.Update(usuarios);
                 await _context.SaveChangesAsync();
 
