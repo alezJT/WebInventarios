@@ -67,10 +67,17 @@ namespace WebInventarios.Controllers
         // POST: UsuariosController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(Usuarios usuarios)
         {
             try
             {
+                if(usuarios == null)
+                {
+                    return View();
+                }
+                 _context.Update(usuarios);
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
             catch
