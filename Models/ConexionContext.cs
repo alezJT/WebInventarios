@@ -21,6 +21,7 @@ namespace WebInventarios.Models
         public virtual DbSet<Producto> Productos { get; set; } = null!;
         public virtual DbSet<ProductosAlmacen> ProductosAlmacen { get;set; } = null!;
         public virtual DbSet<Almacenes> Almacenes { get; set; } = null!;
+        public virtual DbSet<Usuarios>  Usuarios { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -55,8 +56,6 @@ namespace WebInventarios.Models
 
             modelBuilder.Entity<ProductosAlmacen>(entity =>
                 entity.Property(p=> p.Id)
-                
-
                 );
 
             modelBuilder.Entity<ProductosAlmacen>()
@@ -68,6 +67,10 @@ namespace WebInventarios.Models
                 .HasOne(pa => pa.Producto)
                 .WithOne(p => p.ProductosAlmacen1)
                 .HasForeignKey<ProductosAlmacen>(pa => pa.ProductoId);
+
+            modelBuilder.Entity<Usuarios>(entity =>
+               entity.HasKey(u => u.IdUsuario)
+               );
 
             OnModelCreatingPartial(modelBuilder);
         }
