@@ -92,18 +92,28 @@ namespace WebInventarios.Controllers
         }
 
         // GET: UsuariosController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+        //public ActionResult Delete(int id)
+        //{
+        //    return View();
+        //}
 
         // POST: UsuariosController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        [NoDirectAccess]
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task <IActionResult> Delete(int id, IFormCollection collection)
         {
             try
             {
+                Usuarios usuarios = await _context.Usuarios.FindAsync(id);
+
+                if (usuarios == null)
+                {
+                    return NotFound();
+                }
+
+                _context.Remove(usuarios);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             catch
