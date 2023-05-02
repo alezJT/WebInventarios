@@ -29,7 +29,7 @@ namespace WebInventarios.Models
         [Display(Name = "Categorías")]
         public string Categories { get; set; }
 
-        public ICollection<ProductImage> ProductImages { get; set; }
+        //public ICollection<ProductImage> ProductImages { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:N2}")]
         [Display(Name = "Cantidad")]
