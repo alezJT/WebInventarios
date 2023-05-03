@@ -98,8 +98,8 @@ namespace WebInventarios.Controllers
         //}
 
         // POST: UsuariosController/Delete/5
+        [HttpPost]
         [NoDirectAccess]
-
         public async Task <IActionResult> Delete(int id, IFormCollection collection)
         {
             try
