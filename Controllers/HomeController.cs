@@ -68,9 +68,17 @@ namespace WebInventarios.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public async Task <IActionResult> Detalle()
+        public async Task <IActionResult> Detalle(int? id)
         {
-            return View();
+            Producto producto = await _context.Productos.FindAsync(id);
+            AddProductToCartViewModel modelo = new()
+            {
+                Categorias = "",
+                Nombre = producto.ProductoDesc,
+                Descripcion = producto.ProductoComentario,
+                Cantidad = (float)producto.ProductoCan
+            };
+            return View(modelo);
         }
 
     }
