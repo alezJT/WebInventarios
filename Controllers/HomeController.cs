@@ -76,7 +76,7 @@ namespace WebInventarios.Controllers
                 Categorias = "",
                 Nombre = producto.ProductoDesc,
                 Descripcion = producto.ProductoComentario,
-                Cantidad = (float)producto.ProductoCan
+                
             };
             return View(modelo);
         }
