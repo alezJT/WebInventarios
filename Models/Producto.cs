@@ -21,5 +21,10 @@ namespace WebInventarios.Models
 
         public ProductosAlmacen ProductosAlmacen1 { get; set; }
         public ICollection<ProductosAlmacen> productosAlmacen { get; set; }
+        public ICollection<ProductoImagenes> productoImagenes { get; set; }
+
+        public string ImagenFullPath => productoImagenes == null || productoImagenes.Count == 0
+            ? $"http://localhost/images/noImageProduct.jpg"
+            : productoImagenes.FirstOrDefault().PathImagen;
     }
 }

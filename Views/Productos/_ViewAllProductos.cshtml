@@ -17,7 +17,10 @@
             <th>Cantidad</th>
 
             <th>Acciones</th>
-
+            <th>
+                @*@Html.DisplayNameFor(producto => producto.ImagenFullPath)*@
+                imagen
+            </th>
         </tr>
 
     </thead>
@@ -30,7 +33,11 @@
                 <td>@Html.DisplayFor(p=>producto.ProductoDesc) </td>
 
                 <td>@Html.DisplayFor(p=>producto.ProductoCan) </td>
-
+                <td>
+                    <div class="zoom">
+                        <img src="@producto.ImagenFullPath" style="width:100px;" />
+                    </div>
+                </td>
                 <td>
                    
                     <a onclick="showInPopup('@Url.Action("Edit", "Productos", new { ProductoId = producto.ProductoId}, Context.Request.Scheme)' , 'Actualizar Almacen')" class="btn btn-outline-warning"><i style="font-size: 1rem" class="bi bi-pencil-square"></i></a>
