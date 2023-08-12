@@ -113,7 +113,7 @@ namespace WebInventarios.Controllers
         // POST: ProductosController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task <ActionResult> Edit(int id, Producto producto)
+        public async Task <ActionResult> Edit(int id, EditarProducto producto)
         {
             if (!ModelState.IsValid)
             {
@@ -122,12 +122,17 @@ namespace WebInventarios.Controllers
             }
             else
             {
-                if (producto.productosAlmacen == null)
+                if (producto.IDAlmacen == null)
                 {
                     ProductosAlmacen productosAlmacen = await _context.ProductosAlmacen.FindAsync(producto.ProductoId);
                 }
+            
+                Producto product = await _context.Productos.FindAsync(producto.ProductoId);
+                product.ProductoDesc = producto.ProductoDesc;
+                product.ProductoCan = producto.ProductoCan;
+            
 
-                _context.Update(producto);
+                _context.Update(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

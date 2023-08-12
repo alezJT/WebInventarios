@@ -18,8 +18,8 @@ namespace WebInventarios.Models
         public decimal? ProductoCan { get; set; }
 
         public ICollection<Almacenes>? Almacenes { get; set; }
-
-        public ProductosAlmacen ProductosAlmacen1 { get; set; }
+        [Required(ErrorMessage = "El nombre es obligatorio.")]
+        public ProductosAlmacen ProductosAlmacen { get; set; }
         public ICollection<ProductosAlmacen> productosAlmacen { get; set; }
         public ICollection<ProductoImagenes> productoImagenes { get; set; }
 

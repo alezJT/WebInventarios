@@ -59,12 +59,12 @@ namespace WebInventarios.Models
 
             modelBuilder.Entity<ProductosAlmacen>()
                 .HasOne(pa => pa.Almacenes)
-                .WithOne(a => a.ProductosAlmacen1)
+                .WithOne(a => a.ProductosAlmacen)
                 .HasForeignKey<ProductosAlmacen>(pa => pa.IDAlmacen);
 
             modelBuilder.Entity<ProductosAlmacen>()
                 .HasOne(pa => pa.Producto)
-                .WithOne(p => p.ProductosAlmacen1)
+                .WithOne(p => p.ProductosAlmacen)
                 .HasForeignKey<ProductosAlmacen>(pa => pa.ProductoId);
 
             modelBuilder.Entity<Usuarios>(entity =>

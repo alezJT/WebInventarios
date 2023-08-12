@@ -16,7 +16,7 @@ namespace WebInventarios.Models
         public string? ReferenciaAlmacen { get; set; }
 
         public ICollection<Producto> producto { get; set; }
-        public ProductosAlmacen ProductosAlmacen1 { get; set; }
+        public ProductosAlmacen ProductosAlmacen { get; set; }
         public ICollection<ProductosAlmacen>productosAlmacen { get; set; }
     }
 }
