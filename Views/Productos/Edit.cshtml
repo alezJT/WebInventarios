@@ -69,3 +69,20 @@
 
     </main>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#ImagesCarousel").carousel();
+            $("#ImagesCarouselPrev").click(function () {
+                $("#ImagesCarousel").carousel("prev");
+            });
+            $("#ImagesCarouselNext").click(function () {
+                $("#ImagesCarousel").carousel("next");
+            });
+        });
+    </script>
+}
