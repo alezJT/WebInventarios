@@ -115,12 +115,12 @@ namespace WebInventarios.Controllers
         [ValidateAntiForgeryToken]
         public async Task <ActionResult> Edit(int id, EditarProducto producto)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(producto);
+            //if (!ModelState.IsValid)
+            //{
+            //    return View(producto);
 
-            }
-            else
+            //}
+            //else
             {
                 if (producto.IDAlmacen == null)
                 {
