@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using WebInventarios.Models.ViewModels;
+using static System.Net.WebRequestMethods;
+
 
 namespace WebInventarios.Models
 {
@@ -24,7 +26,9 @@ namespace WebInventarios.Models
         public ICollection<ProductoImagenes> productoImagenes { get; set; }
 
         public string ImagenFullPath => productoImagenes == null || productoImagenes.Count == 0
-            ? $"http://localhost/images/noImageProduct.jpg"
+            // ? $"http://localhost/images/noImageProduct.jpg"
+            ? $"https://localhost:7220/imagenes/noImageProduct.jpg"
             : productoImagenes.FirstOrDefault().PathImagen;
+
     }
 }
