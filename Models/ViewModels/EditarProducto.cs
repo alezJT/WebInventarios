@@ -19,6 +19,7 @@ namespace WebInventarios.Models.ViewModels
         [Range(1, int.MaxValue, ErrorMessage = "Debes seleccionar un Almacen")]
         public int? IDAlmacen { get; set; }
 
-      //  public IEnumerable<SelectListItem> Almacenes { get; set; }
+        public IFormFile ImageFile { get; set; }
+        //  public IEnumerable<SelectListItem> Almacenes { get; set; }
     }
 }
