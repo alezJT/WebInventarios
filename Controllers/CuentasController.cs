@@ -2,7 +2,7 @@
 
 namespace WebInventarios.Controllers
 {
-    public class CuentasControllercs : Controller
+    public class CuentasController : Controller
     {
         public IActionResult Index()
         {
