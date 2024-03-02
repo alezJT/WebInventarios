@@ -15,5 +15,9 @@ namespace WebInventarios.Models
         [Range(1, int.MaxValue, ErrorMessage = "Debes seleccionar una Almacen.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public IEnumerable<SelectListItem>? Almacenes { get; set; }
+
+        [Display(Name = "Foto")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        public IFormFile ImageFile { get; set; }
     }
 }
