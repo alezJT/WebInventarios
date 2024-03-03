@@ -23,12 +23,11 @@ namespace WebInventarios.Models
         [Required(ErrorMessage = "El nombre es obligatorio.")]
         public ProductosAlmacen ProductosAlmacen { get; set; }
         public ICollection<ProductosAlmacen> productosAlmacen { get; set; }
-        public ICollection<ProductoImagenes> productoImagenes { get; set; }
+        public ICollection<Imagenesproducto> imagenesproducto { get; set; }
 
-        public string ImagenFullPath => productoImagenes == null || productoImagenes.Count == 0
-            // ? $"http://localhost/images/noImageProduct.jpg"
+        public string ImagenFullPath => imagenesproducto == null || imagenesproducto.Count == 0
             ? $"https://localhost:7220/imagenes/noImageProduct.jpg"
-            : productoImagenes.FirstOrDefault().PathImagen;
+            : imagenesproducto.FirstOrDefault().imagen;
 
     }
 }
