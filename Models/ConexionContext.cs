@@ -22,7 +22,7 @@ namespace WebInventarios.Models
         public virtual DbSet<ProductosAlmacen> ProductosAlmacen { get;set; } = null!;
         public virtual DbSet<Almacenes> Almacenes { get; set; } = null!;
         public virtual DbSet<Usuarios>  Usuarios { get; set; } = null!;
-        public virtual DbSet<ProductoImagenes> ProductoImagenes { get; set; } = null!;
+        public virtual DbSet<Imagenesproducto> Imagenesproducto { get; set; } = null!;
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Inventarios>(entity =>
@@ -53,6 +53,10 @@ namespace WebInventarios.Models
                 entity.HasKey(a => a.IDAlmacen);
 
             });
+
+            modelBuilder.Entity<Imagenesproducto>(entity =>
+               entity.HasKey(ip => ip.imgID));
+            OnModelCreatingPartial(modelBuilder);
 
             modelBuilder.Entity<ProductosAlmacen>(entity =>
                 entity.Property(p=> p.Id) );

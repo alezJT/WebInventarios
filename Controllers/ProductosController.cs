@@ -86,9 +86,6 @@ namespace WebInventarios.Controllers
             if (ProductoID > 0)
 
             {
-             
-                
-
                 Producto producto = await _context.Productos.FindAsync(ProductoID);
                 CrearProductosViewModel model = new()
                 {
@@ -115,14 +112,28 @@ namespace WebInventarios.Controllers
         [ValidateAntiForgeryToken]
         public async Task <ActionResult> Edit(int id, EditarProducto producto)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return View(producto);
 
-            //}
-            //else
+            string? nombreImagen = producto.ImageFile != null ? producto.ImageFile.FileName : null; // Aquí asigna el nombre de la imagen que deseas buscar
+
+            Imagenesproducto imagenesproducto = await _context.Imagenesproducto
+                .FirstOrDefaultAsync(ip => ip.imagen == nombreImagen);
+
+            if (imagenesproducto != null)
             {
-                if (producto.IDAlmacen == null)
+                // Aquí tienes el registro encontrado, puedes trabajar con él
+            }
+            else if (producto.ImageFile != null)
+            {
+                var nuevaImagen = new Imagenesproducto
+                {
+                    ProductoId = producto.ProductoId,
+                    imagen = producto.ImageFile.FileName
+                };
+                _context.Imagenesproducto.Add(nuevaImagen);
+                await _context.SaveChangesAsync();
+            }
+
+            if (producto.IDAlmacen == null)
                 {
                     ProductosAlmacen productosAlmacen = await _context.ProductosAlmacen.FindAsync(producto.ProductoId);
                 }
@@ -135,7 +146,7 @@ namespace WebInventarios.Controllers
                 _context.Update(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
-            }
+            
         }
 
         // GET: ProductosController/Delete/5
