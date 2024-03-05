@@ -131,6 +131,9 @@ namespace WebInventarios.Controllers
                 };
                 _context.Imagenesproducto.Add(nuevaImagen);
                 await _context.SaveChangesAsync();
+
+                SubidasHelper subidasHelper = new SubidasHelper("");
+                string nombreArchivo = await subidasHelper.GuardarArchivoAsync(producto.ImageFile);
             }
 
             if (producto.IDAlmacen == null)
