@@ -121,6 +121,16 @@ namespace WebInventarios.Controllers
             if (imagenesproducto != null)
             {
                 // Aquí tienes el registro encontrado, puedes trabajar con él
+                var nuevaImagen = new Imagenesproducto
+                {
+                    ProductoId = producto.ProductoId,
+                    imagen = producto.ImageFile.FileName
+                };
+                _context.Imagenesproducto.Add(nuevaImagen);
+                await _context.SaveChangesAsync();
+
+                SubidasHelper subidasHelper = new SubidasHelper("C:\\Users\\Yoho\\Pictures\\ImagenPrueba");
+                string nombreArchivo = await subidasHelper.GuardarArchivoAsync(producto.ImageFile);
             }
             else if (producto.ImageFile != null)
             {
