@@ -114,37 +114,45 @@ namespace WebInventarios.Controllers
         {
 
             string? nombreImagen = producto.ImageFile != null ? producto.ImageFile.FileName : null; // Aquí asigna el nombre de la imagen que deseas buscar
+           
 
             Imagenesproducto imagenesproducto = await _context.Imagenesproducto
                 .FirstOrDefaultAsync(ip => ip.imagen == nombreImagen);
 
-            if (imagenesproducto != null)
+            if (imagenesproducto == null)
             {
+                SubidasHelper subidasHelper = new SubidasHelper("wwwroot/Imagenes/Productos");
+                string nombreArchivo = await subidasHelper.GuardarArchivoAsync(producto.ImageFile);
+
                 // Aquí tienes el registro encontrado, puedes trabajar con él
                 var nuevaImagen = new Imagenesproducto
                 {
                     ProductoId = producto.ProductoId,
-                    imagen = producto.ImageFile.FileName
+                    imagen = producto.ImageFile.FileName,
+                    NombreArchivo = nombreArchivo,
                 };
+               
+               
                 _context.Imagenesproducto.Add(nuevaImagen);
                 await _context.SaveChangesAsync();
 
-                SubidasHelper subidasHelper = new SubidasHelper("C:\\Users\\Yoho\\Pictures\\ImagenPrueba");
-                string nombreArchivo = await subidasHelper.GuardarArchivoAsync(producto.ImageFile);
             }
             else if (producto.ImageFile != null)
             {
-                var nuevaImagen = new Imagenesproducto
-                {
-                    ProductoId = producto.ProductoId,
-                    imagen = producto.ImageFile.FileName
-                };
-                _context.Imagenesproducto.Add(nuevaImagen);
-                await _context.SaveChangesAsync();
+                //To Do
+                // entra aqui luego trabajar esta 
+                //var nuevaImagen = new Imagenesproducto
+                //{
+                //    ProductoId = producto.ProductoId,
+                //    imagen = producto.ImageFile.FileName
+                //};
+                //_context.Imagenesproducto.Add(nuevaImagen);
+                //await _context.SaveChangesAsync();
 
-                SubidasHelper subidasHelper = new SubidasHelper("");
-                string nombreArchivo = await subidasHelper.GuardarArchivoAsync(producto.ImageFile);
+                //SubidasHelper subidasHelper = new SubidasHelper("");
+                //string nombreArchivo = await subidasHelper.GuardarArchivoAsync(producto.ImageFile);
             }
+
 
             if (producto.IDAlmacen == null)
                 {
