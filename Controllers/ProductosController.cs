@@ -22,7 +22,9 @@ namespace WebInventarios.Controllers
         // GET: ProductosController
         public async Task <IActionResult> Index()
         {
-            return View(await _context.Productos.ToListAsync());
+            return View(await _context.Productos
+                .Include(ip => ip.imagenesproducto)
+                .ToListAsync());
         }
 
         // GET: ProductosController/Details/5

@@ -27,7 +27,7 @@ namespace WebInventarios.Models
 
         public string ImagenFullPath => imagenesproducto == null || imagenesproducto.Count == 0
             ? $"https://localhost:7220/imagenes/noImageProduct.jpg"
-            : imagenesproducto.FirstOrDefault().imagen;
+            : $"https://localhost:7220/imagenes/Productos/" + imagenesproducto.FirstOrDefault().NombreArchivo;
 
     }
 }
