@@ -30,7 +30,8 @@ namespace WebInventarios.Controllers
             {
                 pageNumber = 1;
             }
-            IQueryable<Producto> query = _context.Productos;
+            IQueryable<Producto> query = _context.Productos
+                                                 .Include(ip => ip.imagenesproducto);
 
             query = query.Where(p => p.ProductoCan > 0);
 
