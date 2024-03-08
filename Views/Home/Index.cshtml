@@ -50,15 +50,15 @@
 
 
 
-<div class="row row-cols-1 row-cols-md-3 g-3 mt-1">
+<div class="row row-cols-1 row-cols-md-4 g-3 mt-1">
     @if (Model.Productos.Count() > 0)
     {
                 @foreach (var item in Model.Productos)
                 {
                     <div class="col">
-                        <div class="card h-100">
+                        <div class="card h-90">
                             <div class="text-center zoom">
-                                <img src="@item.ImagenFullPath" style="height:150px; max-width:200px;" class="text-center" alt=@item.ProductoId />
+                                <img src="@item.ImagenFullPath" style="height:100px; max-width:150px;" class="text-center" alt=@item.ProductoId />
                             </div>
                     <div class="card-body text-center " >
                         <h5 class="card-title text-navy"> @item.ProductoDesc</h5>
