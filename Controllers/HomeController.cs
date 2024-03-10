@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -72,11 +73,13 @@ namespace WebInventarios.Controllers
         public async Task <IActionResult> Detalle(int? id)
         {
             Producto producto = await _context.Productos.FindAsync(id);
+            List<Imagenesproducto> imagenesProductos = await _context.Imagenesproducto.Where(ip => ip.ProductoId == id).ToListAsync();
             AddProductToCartViewModel modelo = new()
             {
                 Categorias = "",
                 Nombre = producto.ProductoDesc,
                 Descripcion = producto.ProductoComentario,
+                ProductImages = imagenesProductos
                 
             };
             return View(modelo);

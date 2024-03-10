@@ -2,7 +2,7 @@
 
 namespace WebInventarios.Models
 {
-    public class AddProductToCartViewModel
+    public class AddProductToCartViewModel 
     {
         public int Id { get; set; }
 
@@ -29,7 +29,7 @@ namespace WebInventarios.Models
         [Display(Name = "Categorías")]
         public string Categorias { get; set; }
 
-        //public ICollection<ProductImage> ProductImages { get; set; }
+        public ICollection<Imagenesproducto> ProductImages { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:N2}")]
         [Display(Name = "Cantidad")]

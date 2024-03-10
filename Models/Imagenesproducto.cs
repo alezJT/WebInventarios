@@ -8,8 +8,9 @@
         public string NombreArchivo { get; set; }
 
         public string ImageFullPath =>  imagen == String.Empty
-            ? $"https://localhost:7228/images/noImageProduct.jpg"
-          : $"http://localhost/Imagenes/products/{imagen}";
+            ? $"https://localhost:7220/imagenes/noImageProduct.jpg"
+          : $"https://localhost:7220/Imagenes/productos/{NombreArchivo}";
 
+        //    : $"https://localhost:7220/imagenes/Productos/" + imagenesproducto.FirstOrDefault().NombreArchivo
     }
 }
