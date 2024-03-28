@@ -123,20 +123,24 @@ namespace WebInventarios.Controllers
 
             if (imagenesproducto == null)
             {
-                SubidasHelper subidasHelper = new SubidasHelper("wwwroot/Imagenes/Productos");
-                string nombreArchivo = await subidasHelper.GuardarArchivoAsync(producto.ImageFile);
-
-                // Aquí tienes el registro encontrado, puedes trabajar con él
-                var nuevaImagen = new Imagenesproducto
+                if (producto.ImageFile != null)
                 {
-                    ProductoId = producto.ProductoId,
-                    imagen = producto.ImageFile.FileName,
-                    NombreArchivo = nombreArchivo,
-                };
-               
-               
-                _context.Imagenesproducto.Add(nuevaImagen);
-                await _context.SaveChangesAsync();
+                    SubidasHelper subidasHelper = new SubidasHelper("wwwroot/Imagenes/Productos");
+                    string nombreArchivo = await subidasHelper.GuardarArchivoAsync(producto.ImageFile);
+
+                    // Aquí tienes el registro encontrado, puedes trabajar con él
+                    var nuevaImagen = new Imagenesproducto
+                    {
+                        ProductoId = producto.ProductoId,
+                        imagen = producto.ImageFile.FileName,
+                        NombreArchivo = nombreArchivo,
+                    };
+
+
+                    _context.Imagenesproducto.Add(nuevaImagen);
+                    await _context.SaveChangesAsync();
+
+                }
 
             }
             else if (producto.ImageFile != null)

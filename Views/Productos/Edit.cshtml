@@ -60,12 +60,134 @@
                                 <span asp-validation-for="ImageFile" class="text-danger"></span>
                             </div>
 
-                            <hr />
+                            <div>
+                                <table class="table" id="imagenlista">
+                                    <thead>
+                                        <tr>
+                                            <th asp>accion</th>
+                                            <th asp>Encabezado de la columna</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <button data-id="ProductoId" class="btn btn-outline-danger deleteItem" data-bs-toggle="modal" data-bs-target="#deleteDialog" style="font-size: 0.80rem"><i style="font-size: 0.75rem" class="bi bi-trash"></i></button>
+                                            </td>
+                                            <td>Dato de la fila 1, columna 1</td>
+                                        </tr>
+                                        
+                                    
+                                        <!-- Agrega más filas según sea necesario -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- /tabla 2 -->
+                            <!-- /.row -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Fixed Header Table</h3>
+
+                                            <div class="card-tools">
+                                                <div class="input-group input-group-sm" style="width: 150px;">
+                                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                                                    <div class="input-group-append">
+                                                        <button type="submit" class="btn btn-default">
+                                                            <i class="fas fa-search"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.card-header -->
+                                        <div class="card-body table-responsive p-0" style="height: 300px;">
+                                            <table class="table table-head-fixed text-nowrap">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>User</th>
+                                                        <th>Date</th>
+                                                        <th>Status</th>
+                                                        <th>Reason</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>183</td>
+                                                        <td>John Doe</td>
+                                                        <td>11-7-2014</td>
+                                                        <td><span class="tag tag-success">Approved</span></td>
+                                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>219</td>
+                                                        <td>Alexander Pierce</td>
+                                                        <td>11-7-2014</td>
+                                                        <td><span class="tag tag-warning">Pending</span></td>
+                                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>657</td>
+                                                        <td>Bob Doe</td>
+                                                        <td>11-7-2014</td>
+                                                        <td><span class="tag tag-primary">Approved</span></td>
+                                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>175</td>
+                                                        <td>Mike Doe</td>
+                                                        <td>11-7-2014</td>
+                                                        <td><span class="tag tag-danger">Denied</span></td>
+                                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>134</td>
+                                                        <td>Jim Doe</td>
+                                                        <td>11-7-2014</td>
+                                                        <td><span class="tag tag-success">Approved</span></td>
+                                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>494</td>
+                                                        <td>Victoria Doe</td>
+                                                        <td>11-7-2014</td>
+                                                        <td><span class="tag tag-warning">Pending</span></td>
+                                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>832</td>
+                                                        <td>Michael Doe</td>
+                                                        <td>11-7-2014</td>
+                                                        <td><span class="tag tag-primary">Approved</span></td>
+                                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>982</td>
+                                                        <td>Rocky Doe</td>
+                                                        <td>11-7-2014</td>
+                                                        <td><span class="tag tag-danger">Denied</span></td>
+                                                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+                                </div>
+                            </div>
+                            
                             <hr />
                             <div class="form-group">
                                 <input type="submit" value="Editar" Class="btn btn-outline-primary" />
                                 <a asp-action="Index" class="btn btn-outline-success">Regresar</a>
                             </div>
+                           
+                           
 
                         </form>
                         </div>
@@ -80,6 +202,7 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script src="~/js/showmodal.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("#ImagesCarousel").carousel();
@@ -90,5 +213,7 @@
                 $("#ImagesCarousel").carousel("next");
             });
         });
+        <script src="~/js/showmodal.js" ></script>
+        sc_deleteDialog.openModal('deleteItem', true, 'btnYesDelete', '/Productos/Delete/', false);
     </script>
 }
