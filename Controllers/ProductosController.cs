@@ -89,7 +89,8 @@ namespace WebInventarios.Controllers
 
             {
 
-                List<Imagenesproducto> imagenesProductos = await _context.Imagenesproducto.Where(ip => ip.ProductoId == ProductoID).ToListAsync();
+                IEnumerable<Imagenesproducto> imagenesProductos = await _context.Imagenesproducto.Where(ip => ip.ProductoId == ProductoID).ToListAsync();
+
                 Producto producto = await _context.Productos.FindAsync(ProductoID);
                 CrearProductosViewModel model = new()
                 {
@@ -99,6 +100,7 @@ namespace WebInventarios.Controllers
                     ProductoComentario = producto.ProductoComentario,
                     ProductoCan = producto.ProductoCan,
                     ImagenesProductos = imagenesProductos,
+                    
                 };
                 return View(model);
              }
