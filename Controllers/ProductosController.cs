@@ -88,6 +88,8 @@ namespace WebInventarios.Controllers
             if (ProductoID > 0)
 
             {
+
+                List<Imagenesproducto> imagenesProductos = await _context.Imagenesproducto.Where(ip => ip.ProductoId == ProductoID).ToListAsync();
                 Producto producto = await _context.Productos.FindAsync(ProductoID);
                 CrearProductosViewModel model = new()
                 {
@@ -96,6 +98,7 @@ namespace WebInventarios.Controllers
                     ProductoDesc = producto.ProductoDesc,
                     ProductoComentario = producto.ProductoComentario,
                     ProductoCan = producto.ProductoCan,
+                    ImagenesProductos = imagenesProductos,
                 };
                 return View(model);
              }
