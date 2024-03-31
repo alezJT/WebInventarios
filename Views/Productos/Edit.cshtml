@@ -60,75 +60,77 @@
                                 <span asp-validation-for="ImageFile" class="text-danger"></span>
                             </div>
 
-                            
-                            <!-- /tabla de imagenes -->
-                            <!-- /.row -->
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h3 class="card-title">Tabla de Imagenes </h3>
-
-                                            <div class="card-tools">
-                                                <div class="input-group input-group-sm" style="width: 150px;">
-                                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                                                    <div class="input-group-append">
-                                                        <button type="submit" class="btn btn-default">
-                                                            <i class="fas fa-search"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /.card-header -->
-                                        <div class="card-body table-responsive p-0" style="height: 300px;">
-                                            <table class="table table-head-fixed text-nowrap">
-                                                <thead>
-                                                    <tr>
-                                                        <th asp>accion</th>
-                                                        <th>Descrip.</th>
-                                                        <th>imagen</th>
-                                                        
-                                                       
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach (var imagenes in Model.ImagenesProductos)
-                                                    {
-                                                        <tr>
-                                                            <td>
-                                                                <button data-id="imgID" class="btn btn-outline-danger deleteItem" data-bs-toggle="modal" data-bs-target="#deleteDialog" style="font-size: 0.80rem"><i style="font-size: 0.75rem" class="bi bi-trash"></i></button>
-                                                            </td>
-                                                            <td>
-                                                                @Html.DisplayFor(ip=> imagenes.imagen)
-                                                            </td>
-                                                            <td>
-                                                                <img src="@imagenes.ImageFullPath" style="width:75px;" />
-                                                            </td>
-                                                        </tr>
-                                                    }
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <!-- /.card-body -->
-                                    </div>
-                                    <!-- /.card -->
-                                </div>
-                            </div>
-                            <!-- / Fin de tabla 2=de imagenes -->
-
-                            
-
                             <div class="form-group">
                                 <input type="submit" value="Editar" Class="btn btn-outline-primary" />
                                 <a asp-action="Index" class="btn btn-outline-success">Regresar</a>
                             </div>
-                           
-                           
+
 
                         </form>
+
+
+                        <!-- /tabla de imagenes -->
+                        <!-- /.row -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Tabla de Imagenes </h3>
+
+                                        <div class="card-tools">
+                                            <div class="input-group input-group-sm" style="width: 150px;">
+                                                <input type="text" name="table_search" class="form-control float-right" placeholder="Filtre busqueda">
+
+                                                <div class="input-group-append">
+                                                    <button type="submit" class="btn btn-default">
+                                                        <i class="fas fa-search"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body table-responsive p-0" style="height: 300px;">
+                                        <table class="table table-head-fixed text-nowrap">
+                                            <thead>
+                                                <tr>
+                                                    <th asp>accion</th>
+                                                    <th>Descrip.</th>
+                                                    <th>imagen</th>
+
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var imagenes in Model.ImagenesProductos)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            @*<button data-id="imgID" class="btn btn-outline-danger deleteItemimgID" data-bs-toggle="modal" data-bs-target="#deleteDialog" style="font-size: 0.80rem"><i style="font-size: 0.75rem" class="bi bi-trash"></i></button>*@
+                                                            <button class="btn btn-outline-danger deleteItemimgID" data-imgid="@imagenes.imgID" style="font-size: 0.80rem"><i style="font-size: 0.75rem" class="bi bi-trash"></i></button>
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(ip=> imagenes.imagen)
+                                                        </td>
+                                                        <td>
+                                                            <img src="@imagenes.ImageFullPath" style="width:75px;" />
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+                                <!-- /.card -->
+                            </div>
                         </div>
+                        <!-- / Fin de tabla 2=de imagenes -->
+
+                       
+
+
+                    </div>
                     </div>
                 </div>
             </div>
@@ -140,8 +142,8 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-    <script src="~/js/showmodal.js"></script>
-    <script type="text/javascript">
+    @*<script src="~/js/showmodal.js"></script>*@
+   @* <script type="text/javascript">
         $(document).ready(function () {
             $("#ImagesCarousel").carousel();
             $("#ImagesCarouselPrev").click(function () {
@@ -151,7 +153,28 @@
                 $("#ImagesCarousel").carousel("next");
             });
         });
-        <script src="~/js/showmodal.js" ></script>
+       
+    </script>*@
+    <script src="~/js/showmodal.js"></script>
         sc_deleteDialog.openModal('deleteItem', true, 'btnYesDelete', '/Productos/Delete/', false);
+    <script>
+        $(document).ready(function () {
+            $(".deleteItemimgID").click(function () {
+                var imgId = $(this).data("imgid");
+                $.ajax({
+                    url: "/Productos/DeleteImagen",
+                    method: "POST",
+                    data: { imgID: imgId },
+                    success: function (response) {
+                        // Manejar la respuesta del servidor si es necesario
+                        console.log(response);
+                    },
+                    error: function (xhr, status, error) {
+                        // Manejar errores
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
     </script>
 }
